@@ -1,6 +1,7 @@
 const express = require('express')
 const companion = require('@uppy/companion')
 const session = require('express-session')
+require('dotenv').config()
 
 const app = express()
 
@@ -20,10 +21,15 @@ const companionOptions = {
   secret: process.env.COMPANION_SECRET || 'your-companion-secret',
   providerOptions: {
     drive: {
-      key: process.env.GOOGLE_KEY || '704958830010-8ksj7hhie33b3ui2elhdpu8elhnrpdhq.apps.googleusercontent.com',
-      secret: process.env.GOOGLE_SECRET || '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',
-      credentialsURL: 'http://localhost:3020/drive/send-token'
-    }
+      key: process.env.GOOGLE_KEY,
+      secret: process.env.GOOGLE_SECRET,
+      credentialsURL: 'http://localhost:3020/companion/drive/send-token'
+    },
+    dropbox: {
+        key: process.env.DROPBOX_KEY,
+        secret: process.env.DROPBOX_SECRET,
+        credentialsURL: 'http://localhost:3020/companion/dropbox/send-token'
+    },
   },
   corsOrigins: true, // For development. In production, specify exact domains
   uploadUrls: [
