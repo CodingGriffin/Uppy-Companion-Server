@@ -29,6 +29,7 @@ const companionOptions = {
   uploadUrls: [
     'http://45.144.28.239:3000/uploads'  // Your TUS server URL through ngrok
   ],
+  tusDeferredUploadLength: true,
   streamingUpload: {
     socketTimeout: 300000, // 5 minutes
     endpoint: 'http://45.144.28.239:3000/uploads',
