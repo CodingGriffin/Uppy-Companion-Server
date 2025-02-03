@@ -26,19 +26,23 @@ const companionOptions = {
       credentialsURL: 'http://localhost:3020/companion/drive/send-token'
     },
     dropbox: {
-        key: process.env.DROPBOX_KEY,
-        secret: process.env.DROPBOX_SECRET,
-        credentialsURL: 'http://localhost:3020/companion/dropbox/send-token'
+      key: process.env.DROPBOX_KEY,
+      secret: process.env.DROPBOX_SECRET,
+      credentialsURL: 'http://localhost:3020/companion/dropbox/send-token'
     },
+    box: {
+      key: process.env.BOX_KEY,
+      secret: process.env.BOX_SECRET,
+    }
   },
   corsOrigins: true, // For development. In production, specify exact domains
   uploadUrls: [
-    'http://45.144.28.239:3000/uploads'  // Your TUS server URL through ngrok
+    'http://everyusb.info:3000/uploads'  // Your TUS server URL through ngrok
   ],
   tusDeferredUploadLength: true,
   streamingUpload: {
     socketTimeout: 300000, // 5 minutes
-    endpoint: 'http://45.144.28.239:3000/uploads',
+    endpoint: 'http://everyusb.info:3000/uploads',
     protocol: 'tus',
     tusOptions: {
       deferredLength: true,
