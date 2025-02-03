@@ -4,6 +4,7 @@ const session = require('express-session')
 require('dotenv').config()
 
 const app = express()
+const uploadUrls = ['http://everyusb.info:3000/uploads']
 
 app.use(session({
   secret: process.env.SESSION_SECRET || 'your-session-secret',
@@ -23,12 +24,10 @@ const companionOptions = {
     drive: {
       key: process.env.GOOGLE_KEY,
       secret: process.env.GOOGLE_SECRET,
-      credentialsURL: 'http://localhost:3020/companion/drive/send-token'
     },
     dropbox: {
       key: process.env.DROPBOX_KEY,
       secret: process.env.DROPBOX_SECRET,
-      credentialsURL: 'http://localhost:3020/companion/dropbox/send-token'
     },
     box: {
       key: process.env.BOX_KEY,
@@ -36,13 +35,10 @@ const companionOptions = {
     }
   },
   corsOrigins: true, // For development. In production, specify exact domains
-  uploadUrls: [
-    'http://everyusb.info:3000/uploads'  // Your TUS server URL through ngrok
-  ],
+  uploadUrls,
   tusDeferredUploadLength: true,
   streamingUpload: {
     socketTimeout: 300000, // 5 minutes
-    endpoint: 'http://everyusb.info:3000/uploads',
     protocol: 'tus',
     tusOptions: {
       deferredLength: true,
