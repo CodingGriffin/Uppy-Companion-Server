@@ -32,6 +32,10 @@ const companionOptions = {
     box: {
       key: process.env.BOX_KEY,
       secret: process.env.BOX_SECRET,
+    },
+    onedrive: {
+      key: process.env.ONEDRIVE_KEY,
+      secret: process.env.ONEDRIVE_SECRET,
     }
   },
   corsOrigins: true, // For development. In production, specify exact domains
